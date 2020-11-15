@@ -6864,6 +6864,11 @@ js-tokens@^3.0.2:
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-3.0.2.tgz#9866df395102130e38f7f996bceb65443209c25b"
   integrity sha1-mGbfOVECEw449/mWvOtlRDIJwls=
 
+js-video-url-parser@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/js-video-url-parser/-/js-video-url-parser-0.4.2.tgz#db14c7e99cccac183708c00d4d8ba66da122d227"
+  integrity sha512-8EFeqsPxhrGdkKj6v2PSTkWznTDV+9fQZpvlz4uEBCFbLPGDU7vY/RNeeH6QufHzTjHI8QaW4xP6fzch2EHmoA==
+
 js-yaml@^3.13.1:
   version "3.14.0"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.14.0.tgz#a7a34170f26a21bb162424d8adacb4113a69e482"

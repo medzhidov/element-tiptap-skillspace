@@ -13,6 +13,7 @@ import { Component, Prop, Inject, Vue } from 'vue-property-decorator';
 import { MessageBox } from 'element-ui';
 import { MenuData } from 'tiptap';
 import CommandButton from './CommandButton.vue';
+import urlParser from 'js-video-url-parser';
 
 @Component({
   components: {
@@ -36,6 +37,14 @@ export default class IframeCommandButton extends Vue {
       roundButton: true,
     // @ts-ignore
     }).then(({ value: href }) => {
+      // Parse video url to embed
+      const parsedInfo = urlParser.parse(href);
+
+      href = parsedInfo ? urlParser.create({
+        videoInfo: parsedInfo,
+        format: 'embed',
+      }) : href;
+
       this.editorContext.commands.iframe({ src: href });
     }).catch(() => {
 
