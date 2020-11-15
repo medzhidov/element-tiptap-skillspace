@@ -92,7 +92,6 @@
     "url": "https://github.com/Leecason/element-tiptap/issues"
   },
   "gitHooks": {
-    "pre-commit": "lint-staged"
   },
   "homepage": "https://github.com/Leecason/element-tiptapr#readme",
   "keywords": [
