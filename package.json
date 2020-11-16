@@ -91,8 +91,7 @@
   "bugs": {
     "url": "https://github.com/Leecason/element-tiptap/issues"
   },
-  "gitHooks": {
-  },
+  "gitHooks": {},
   "homepage": "https://github.com/Leecason/element-tiptapr#readme",
   "keywords": [
     "editor",

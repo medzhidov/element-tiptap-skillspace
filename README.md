@@ -1,3 +1,6 @@
+NPM для работы
+YARN для билда
+
 <p align="center"><a href="https://github.com/Leecason/element-tiptap" target="_blank" rel="noopener noreferrer"><img src="/examples/assets/logo_for_github.png?raw=true" alt="ElTiptap logo"></a></p>
 
 <p align="center">
