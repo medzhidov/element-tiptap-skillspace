@@ -263,17 +263,17 @@
         newHeight = Math.max(h + dy, MIN_SIZE);
 
       // Если изменилась ширина - меняем её, высоту подстраиваем, иначе наоборот
-      if (w !== newWidth && newWidth < this.maxSize.width) {
+      // if (w !== newWidth && newWidth < this.maxSize.width) {
         this.updateAttrs({
           width: newWidth,
           height: newWidth / aspectRatio
         });
-      } else if (newWidth < this.maxSize.width) {
-        this.updateAttrs({
-          width: newHeight / aspectRatio,
-          height: newHeight
-        });
-      }
+      // } else if (newWidth < this.maxSize.width) {
+      //   this.updateAttrs({
+      //     width: newHeight * aspectRatio,
+      //     height: newHeight
+      //   });
+      // }
     }
 
     private onMouseUp(e: MouseEvent): void {
