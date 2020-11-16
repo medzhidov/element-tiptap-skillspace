@@ -260,20 +260,19 @@
       const dy = (e.clientY - y) * (/t/.test(dir) ? -1 : 1);
 
       const newWidth = clamp(w + dx, MIN_SIZE, this.maxSize.width),
-        newHeight = Math.max(h + dy, MIN_SIZE);
+        newHeight = clamp(h + dy, MIN_SIZE / aspectRatio, this.maxSize.width / aspectRatio);
 
-      // Если изменилась ширина - меняем её, высоту подстраиваем, иначе наоборот
-      // if (w !== newWidth && newWidth < this.maxSize.width) {
+      if (dx > dy) {
         this.updateAttrs({
           width: newWidth,
           height: newWidth / aspectRatio
         });
-      // } else if (newWidth < this.maxSize.width) {
-      //   this.updateAttrs({
-      //     width: newHeight * aspectRatio,
-      //     height: newHeight
-      //   });
-      // }
+      } else {
+        this.updateAttrs({
+          width: newHeight * aspectRatio,
+          height: newHeight
+        });
+      }
     }
 
     private onMouseUp(e: MouseEvent): void {
