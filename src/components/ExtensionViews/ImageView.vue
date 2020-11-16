@@ -8,6 +8,7 @@
       class="image-view__body"
     >
       <img
+        ref="image"
         :src="src"
         :title="node.attrs.title"
         :alt="node.attrs.alt"
@@ -83,6 +84,7 @@
       ImageBubbleMenu,
     },
   })
+
   export default class ImageView extends Vue {
     @Prop({
       type: ProsemirrorNode,
@@ -262,17 +264,10 @@
       const newWidth = clamp(w + dx, MIN_SIZE, this.maxSize.width),
         newHeight = clamp(h + dy, MIN_SIZE / aspectRatio, this.maxSize.width / aspectRatio);
 
-      if (dx > dy) {
-        this.updateAttrs({
-          width: newWidth,
-          height: newWidth / aspectRatio
-        });
-      } else {
-        this.updateAttrs({
-          width: newHeight * aspectRatio,
-          height: newHeight
-        });
-      }
+      this.updateAttrs({
+        width: newWidth,
+        height: newWidth / aspectRatio
+      });
     }
 
     private onMouseUp(e: MouseEvent): void {
