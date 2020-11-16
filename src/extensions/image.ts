@@ -111,4 +111,42 @@ export default class Image extends TiptapImage implements MenuBtnView {
       },
     };
   }
+
+  get plugins() {
+    return [
+      new Plugin({
+        props: {
+          handleDOMEvents: {
+            paste(view, event) {
+              const items = (event.clipboardData || event.originalEvent.clipboardData).items;
+
+              items.forEach(async item => {
+                const {schema} = view.state
+                const image = item.getAsFile()
+
+                // Return here, otherwise copying texts won't possible anymore
+                if (!image || !image.type.includes('image')) {
+                  return
+                }
+
+                event.preventDefault()
+
+                const reader = new FileReader();
+
+                reader.addEventListener("load", function () {
+                  const node = schema.nodes.image.create({
+                    src: reader.result,
+                  });
+                  const transaction = view.state.tr.replaceSelectionWith(node)
+                  view.dispatch(transaction)
+                }, false);
+
+                reader.readAsDataURL(image);
+              })
+            }
+          }
+        }
+      })
+    ];
+  }
 }
