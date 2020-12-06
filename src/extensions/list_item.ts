@@ -1,3 +1,4 @@
+
 import { NodeSpec, Node as ProsemirrorNode, DOMOutputSpec } from 'prosemirror-model';
 import { ListItem as TiptapListItem } from 'tiptap-extensions';
 import { transformLineHeightToCSS } from '@/utils/line_height';
@@ -60,7 +61,7 @@ function toDOM (node: ProsemirrorNode): DOMOutputSpec {
 }
 
 export default class ListItem extends TiptapListItem {
-  get schema () {
+  get schema(): NodeSpec {
     return ListItemNodeSpec;
   }
 }

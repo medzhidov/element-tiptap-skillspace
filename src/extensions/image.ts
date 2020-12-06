@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 import {DOMOutputSpec, Node as ProsemirrorNode} from 'prosemirror-model';
 import {Plugin} from 'prosemirror-state';
 import {Image as TiptapImage} from 'tiptap-extensions';
@@ -113,12 +113,14 @@ export default class Image extends TiptapImage implements MenuBtnView {
     };
   }
 
+  // @ts-ignore
   get plugins() {
     return [
       new Plugin({
         props: {
           handleDOMEvents: {
             paste(view, event) {
+              // @ts-ignore
               const items = (event.clipboardData || event.originalEvent.clipboardData).items;
 
               items.forEach(async item => {
@@ -127,7 +129,7 @@ export default class Image extends TiptapImage implements MenuBtnView {
 
                 // Return here, otherwise copying texts won't possible anymore
                 if (!image || !image.type.includes('image')) {
-                  return
+                  return false;
                 }
 
                 event.preventDefault()
@@ -140,10 +142,13 @@ export default class Image extends TiptapImage implements MenuBtnView {
                   });
                   const transaction = view.state.tr.replaceSelectionWith(node)
                   view.dispatch(transaction)
+
                 }, false);
 
                 reader.readAsDataURL(image);
               })
+
+              return true;
             }
           }
         }
