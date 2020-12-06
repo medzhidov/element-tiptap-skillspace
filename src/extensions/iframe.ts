@@ -1,14 +1,15 @@
-import {MenuData, Node} from 'tiptap';
-import {MenuBtnView} from '@/../types';
+// @ts-nocheck
+import { Node, MenuData } from 'tiptap';
+import { MenuBtnView } from '@/../types';
 import IframeCommandButton from '@/components/MenuCommands/IframeCommandButton.vue';
 
 export default class Iframe extends Node implements MenuBtnView {
-  get name() {
+  get name () {
     return 'iframe';
   }
 
   // @ts-ignore
-  get schema(): NodeSpec {
+  get schema () {
     return {
       attrs: {
         src: {
@@ -32,9 +33,9 @@ export default class Iframe extends Node implements MenuBtnView {
     };
   }
 
-  commands({type}): any {
+  commands ({ type }) {
     return attrs => (state, dispatch) => {
-      const {selection} = state;
+      const { selection } = state;
       const position = selection.$cursor ? selection.$cursor.pos : selection.$to.pos;
       const node = type.create(attrs);
       const transaction = state.tr.insert(position, node);
@@ -42,15 +43,15 @@ export default class Iframe extends Node implements MenuBtnView {
     };
   }
 
-  get view(): any {
+  get view () {
     return {
       props: ['node', 'updateAttrs', 'view'],
       computed: {
         src: {
-          get() {
+          get () {
             return this.node.attrs.src;
           },
-          set(src) {
+          set (src) {
             this.updateAttrs({
               src,
             });
@@ -59,13 +60,13 @@ export default class Iframe extends Node implements MenuBtnView {
       },
       template: `
         <div class="iframe">
-        <iframe class="iframe__embed" :src="src"></iframe>
+          <iframe class="iframe__embed" :src="src"></iframe>
         </div>
       `,
     };
   }
 
-  menuBtnView(editorContext: MenuData) {
+  menuBtnView (editorContext: MenuData) {
     return {
       component: IframeCommandButton,
       componentProps: {

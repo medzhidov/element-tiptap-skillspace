@@ -1,6 +1,6 @@
-
+// @ts-nocheck
 import { Node } from 'tiptap';
-import {Node as ProsemirrorNode, NodeSpec} from 'prosemirror-model';
+import { Node as ProsemirrorNode } from 'prosemirror-model';
 import { getParagraphNodeAttrs, toParagraphDOM } from './paragraph';
 
 export default class Title extends Node {
@@ -15,7 +15,7 @@ export default class Title extends Node {
     };
   }
 
-  get schema(): NodeSpec {
+  get schema () {
     return {
       attrs: {
         textAlign: { default: null },

@@ -1,4 +1,3 @@
-
 import { Mark as ProsemirrorMark } from 'prosemirror-model';
 import { Plugin, TextSelection } from 'prosemirror-state';
 import { Link as TiptapLink } from 'tiptap-extensions';
@@ -38,7 +37,7 @@ function toDOM (mark: ProsemirrorMark) {
 
 export default class Link extends TiptapLink implements MenuBtnView {
   // @ts-ignore
-  get schema(): NodeSpec {
+  get schema () {
     return {
       attrs: {
         href: {

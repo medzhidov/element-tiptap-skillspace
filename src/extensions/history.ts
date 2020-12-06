@@ -1,4 +1,3 @@
-
 import { History as TiptapHistory } from 'tiptap-extensions';
 import { MenuData } from 'tiptap';
 import { MenuBtnView } from '@/../types';

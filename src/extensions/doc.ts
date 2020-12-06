@@ -1,4 +1,3 @@
-
 import { Doc as TiptapDoc } from 'tiptap';
 
 export default class Doc extends TiptapDoc {
@@ -8,7 +7,7 @@ export default class Doc extends TiptapDoc {
     };
   }
 
-  get schema() {
+  get schema () {
     const title = !!this.options.title;
 
     return {

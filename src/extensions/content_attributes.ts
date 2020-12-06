@@ -1,4 +1,3 @@
-
 import { Extension } from 'tiptap';
 import { Plugin } from 'prosemirror-state';
 

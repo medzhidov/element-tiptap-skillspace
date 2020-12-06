@@ -4,11 +4,11 @@ import { PREVIEW_WINDOW_WIDTH } from '@/constants';
 import PreviewCommandButton from '@/components/MenuCommands/PreviewCommandButton.vue';
 
 export default class Preview extends Extension implements MenuBtnView {
-  get name (): string {
+  get name () {
     return 'preview';
   }
 
-  get defaultOptions (): { contentWidth: string } {
+  get defaultOptions () {
     return {
       contentWidth: PREVIEW_WINDOW_WIDTH,
     };

@@ -1,4 +1,3 @@
-
 import { Extension } from 'tiptap';
 import { MenuBtnView } from '@/../types';
 import CodeViewCommandButton from '@/components/MenuCommands/CodeViewCommandButton.vue';

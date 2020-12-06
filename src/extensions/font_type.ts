@@ -1,7 +1,7 @@
-
+// @ts-nocheck
 import { Mark, MenuData } from 'tiptap';
 import { CommandFunction } from 'tiptap-commands';
-import {Node as ProsemirrorNode, MarkType, MarkSpec} from 'prosemirror-model';
+import { Node as ProsemirrorNode, MarkType } from 'prosemirror-model';
 import { MenuBtnView } from '@/../types';
 import FontTypeDropdown from '@/components/MenuCommands/FontTypeDropdown.vue';
 import { DEFAULT_FONT_TYPE_MAP, setFontType } from '@/utils/font_type';
@@ -17,10 +17,9 @@ export default class FontType extends Mark implements MenuBtnView {
     };
   }
 
-  get schema(): MarkSpec {
+  get schema () {
     return {
       attrs: {
-        // @ts-ignore
         name: '',
       },
       inline: true,
@@ -35,7 +34,6 @@ export default class FontType extends Mark implements MenuBtnView {
           },
         },
       ],
-      // @ts-ignore
       toDOM (node: ProsemirrorNode) {
         const { name } = node.attrs;
         const attrs: { style?: string } = {};

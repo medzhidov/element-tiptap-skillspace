@@ -23,36 +23,11 @@ declare module 'tiptap' {
 
   class Extension<Options = any> {
     constructor (options?: Options);
-    private _name?: string;
-    // @ts-ignore
-    public get name(): string {
-        return this._name;
-    }
-    // @ts-ignore
-    public set name(value: string) {
-        this._name = value;
-    }
-
-    private _defaultOptions?: Options;
-    // @ts-ignore
-    public get defaultOptions(): Options {
-        return this._defaultOptions;
-    }
-    // @ts-ignore
-    public set defaultOptions(value: Options) {
-        this._defaultOptions = value;
-    }
+    name?: string;
+    defaultOptions?: Options;
     options?: Options;
     update?: (view: EditorView) => any;
-    private _plugins?: Plugin[];
-    // @ts-ignore
-    get plugins(): Plugin[] {
-      return this._plugins;
-    }
-    // @ts-ignore
-    set plugins(value: Plugin[]) {
-      this._plugins = value;
-    }
+    plugins?: Plugin[];
     commands? ({ schema, attrs } : { schema: Schema | NodeSpec | MarkSpec, attrs?: { [key: string]: string }}): CommandGetter;
     inputRules? ({ schema }: { schema: Schema }): any[];
     parseRules? ({ schema }: { schema: Schema }): Plugin[];
@@ -61,24 +36,8 @@ declare module 'tiptap' {
   }
 
   class Node<V extends NodeView = any> extends Extension {
-    private _schema?: NodeSpec;
-    // @ts-ignore
-    set schema(value: NodeSpec) {
-      this._schema = value;
-    }
-    // @ts-ignore
-    get schema(): NodeSpec {
-      return this._schema;
-    }
-    private _view?: { new(): V };
-    // @ts-ignore
-    set view(value: { new(): V }) {
-      this._view = value;
-    }
-    // @ts-ignore
-    get view(): { new(): V } {
-      return this._view;
-    }
+    schema?: NodeSpec;
+    view?: { new(): V };
     commands? ({ type, schema, attrs } : { type: NodeType, schema: NodeSpec, attrs?: { [key: string]: string }}): CommandGetter;
     inputRules? ({ type, schema }: { type: NodeType, schema: Schema }): any[];
     parseRules? ({ type, schema }: { type: NodeType, schema: Schema }): Plugin[];
@@ -86,24 +45,8 @@ declare module 'tiptap' {
   }
 
   class Mark<V extends NodeView = any> extends Extension {
-    private _schema?: MarkSpec;
-    // @ts-ignore
-    set schema(value: MarkSpec) {
-      this._schema = value;
-    }
-    // @ts-ignore
-    get schema(): MarkSpec {
-      return this._schema;
-    }
-    private _view?: { new(): V };
-    // @ts-ignore
-    get view(): { new(): V } {
-      return this._view;
-    }
-    // @ts-ignore
-    set view(value: { new(): V }) {
-      this._view = value;
-    }
+    schema?: MarkSpec;
+    view?: { new(): V };
     commands? ({ type, schema, attrs } : { type: MarkType, schema: MarkSpec, attrs?: { [key: string]: string }}): CommandGetter;
     inputRules? ({ type, schema }: { type: MarkType, schema: Schema }): any[];
     parseRules? ({ type, schema }: { type: MarkType, schema: Schema }): Plugin[];

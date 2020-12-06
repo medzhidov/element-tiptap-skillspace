@@ -1,4 +1,3 @@
-
 import { Extension } from 'tiptap';
 import { MenuBtnView } from '@/../types';
 import FullscreenCommandButton from '@/components/MenuCommands/FullscreenCommandButton.vue';

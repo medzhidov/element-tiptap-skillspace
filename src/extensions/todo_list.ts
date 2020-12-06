@@ -1,11 +1,11 @@
-import {TodoList as TiptapTodoList} from 'tiptap-extensions';
-import {MenuData} from 'tiptap';
-import {MenuBtnView} from '@/../types';
+// @ts-nocheck
+import { TodoList as TiptapTodoList } from 'tiptap-extensions';
+import { MenuData } from 'tiptap';
+import { MenuBtnView } from '@/../types';
 import CommandButton from '@/components/MenuCommands/CommandButton.vue';
-import {NodeSpec} from "prosemirror-model";
 
 export default class TodoList extends TiptapTodoList implements MenuBtnView {
-  get schema(): NodeSpec {
+  get schema () {
     return {
       group: 'block',
       content: 'todo_item+',
@@ -30,7 +30,7 @@ export default class TodoList extends TiptapTodoList implements MenuBtnView {
     };
   }
 
-  menuBtnView({isActive, commands, t}: MenuData) {
+  menuBtnView ({ isActive, commands, t }: MenuData) {
     return {
       component: CommandButton,
       componentProps: {
