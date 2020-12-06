@@ -33,7 +33,7 @@ function toDOM (node: ProsemirrorNode): DOMOutputSpec {
 }
 
 export default class Blockquote extends TiptapBlockquote implements MenuBtnView {
-  get schema () {
+  get schema (): NodeSpec {
     return BlockquoteNodeSpec;
   }
 

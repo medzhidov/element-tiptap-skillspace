@@ -1,3 +1,4 @@
+
 import { NodeSpec, Node as ProsemirrorNode, DOMOutputSpec } from 'prosemirror-model';
 import { Paragraph as TiptapParagraph } from 'tiptap';
 import { transformLineHeightToCSS, transformCSStoLineHeight } from '@/utils/line_height';
@@ -68,7 +69,7 @@ function toDOM (node: ProsemirrorNode): DOMOutputSpec {
 }
 
 export default class Paragraph extends TiptapParagraph {
-  get schema () {
+  get schema(): NodeSpec {
     return ParagraphNodeSpec;
   }
 }

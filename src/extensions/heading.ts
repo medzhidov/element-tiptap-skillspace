@@ -1,3 +1,4 @@
+
 import { NodeSpec, Node as ProsemirrorNode, DOMOutputSpec } from 'prosemirror-model';
 import { Heading as TiptapHeading } from 'tiptap-extensions';
 import { MenuData } from 'tiptap';

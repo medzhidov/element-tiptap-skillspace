@@ -1,7 +1,7 @@
-// @ts-nocheck
+
 import { Mark, MenuData } from 'tiptap';
 import { CommandFunction } from 'tiptap-commands';
-import { Node as ProsemirrorNode, MarkType } from 'prosemirror-model';
+import {Node as ProsemirrorNode, MarkType, NodeSpec, MarkSpec} from 'prosemirror-model';
 import { MenuBtnView } from '@/../types';
 import FontSizeDropdown from '@/components/MenuCommands/FontSizeDropdown.vue';
 import { DEFAULT_FONT_SIZES, setFontSize, convertToPX } from '@/utils/font_size';
@@ -17,9 +17,10 @@ export default class FontSize extends Mark implements MenuBtnView {
     };
   }
 
-  get schema () {
+  get schema(): MarkSpec {
     return {
       attrs: {
+        // @ts-ignore
         px: '',
       },
       inline: true,
@@ -39,6 +40,7 @@ export default class FontSize extends Mark implements MenuBtnView {
           },
         },
       ],
+      // @ts-ignore
       toDOM (node: ProsemirrorNode) {
         const { px } = node.attrs;
         const attrs: { style?: string } = {};
