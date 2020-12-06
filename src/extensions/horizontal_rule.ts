@@ -1,3 +1,4 @@
+
 import { HorizontalRule as TiptapHorizontalRule } from 'tiptap-extensions';
 import { MenuData } from 'tiptap';
 import { MenuBtnView } from '@/../types';

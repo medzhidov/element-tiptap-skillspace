@@ -1,3 +1,4 @@
+
 import { Extension, MenuData, CommandGetter } from 'tiptap';
 import { CommandFunction } from 'tiptap-commands';
 import { MenuBtnView, MenuBtnComponentOptions } from '@/../types';

@@ -1,10 +1,11 @@
-// @ts-nocheck
+
 import { Mark, MenuData } from 'tiptap';
 import { CommandFunction } from 'tiptap-commands';
 import { MenuBtnView } from '@/../types';
 import applyMark from '@/utils/apply_mark';
 import { COLOR_SET, isHexColor } from '@/utils/color';
 import ColorPopover from '@/components/MenuCommands/ColorPopover.vue';
+import {MarkSpec, NodeSpec} from "prosemirror-model";
 
 export default class TextColor extends Mark implements MenuBtnView {
   get name () {
@@ -17,9 +18,10 @@ export default class TextColor extends Mark implements MenuBtnView {
     };
   }
 
-  get schema () {
+  get schema(): MarkSpec {
     return {
       attrs: {
+        // @ts-ignore
         color: '',
       },
       inline: true,
