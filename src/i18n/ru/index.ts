@@ -100,15 +100,6 @@ export default {
           },
         },
       },
-      // Iframe: {
-      //   tooltip: 'Вставить медиа',
-      //   control: {
-      //     title: 'Вставить медиа',
-      //     placeholder: 'Адрес',
-      //     confirm: 'Вставить',
-      //     cancel: 'Отменить',
-      //   },
-      // },
       Iframe: {
         buttons: {
           insert_iframe: {
@@ -121,13 +112,6 @@ export default {
           },
           iframe_options: {
             tooltip: 'Опции изображения',
-          },
-          display: {
-            tooltip: 'Положение',
-            inline: 'В строке текста',
-            block: 'Отдельно от текста',
-            left: 'Обтекание текста справа',
-            right: 'Обтекание текста слева',
           },
         },
         control: {
