@@ -238,8 +238,6 @@
       const dx = (e.clientX - x) * (/l/.test(dir) ? -1 : 1);
       const dy = (e.clientY - y) * (/t/.test(dir) ? -1 : 1);
 
-      console.log(w);
-
       const newWidth = clamp(w + dx, MIN_WIDTH, this.maxSize.width);
       const newHeight = clamp(h + dy, MIN_HEIGHT, this.maxSize.height);
 
