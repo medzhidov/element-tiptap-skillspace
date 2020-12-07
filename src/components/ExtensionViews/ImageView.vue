@@ -189,7 +189,7 @@
 
       this.getMaxSize();
 
-      const width = result.width <= this.maxSize.width ? result.width : this.maxSize.width;
+      const width = (this.width ?? result.width) <= this.maxSize.width ? (this.width ?? result.width) : this.maxSize.width;
 
       this.updateAttrs({
         width: width,

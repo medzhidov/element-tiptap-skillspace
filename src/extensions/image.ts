@@ -80,9 +80,7 @@ export default class Image extends TiptapImage implements MenuBtnView {
           default: '',
         },
         width: {
-          default: this.imageDefaultWidth > 0
-            ? this.imageDefaultWidth
-            : DEFAULT_IMAGE_WIDTH,
+          default: null,
         },
         height: {
           default: null,
