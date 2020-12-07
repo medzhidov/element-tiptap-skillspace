@@ -1,32 +1,45 @@
 import {MenuData, Node} from 'tiptap';
 import {MenuBtnView} from '@/../types';
-import IframeCommandButton from '@/components/MenuCommands/IframeCommandButton.vue';
+import InsertIframeCommandButton from '@/components/MenuCommands/Iframe/InsertIframeCommandButton.vue';
+import IframeView from "@/components/ExtensionViews/IframeView.vue";
+import {NodeSpec} from "prosemirror-model";
 
 export default class Iframe extends Node implements MenuBtnView {
   get name() {
     return 'iframe';
   }
 
-  // @ts-ignore
   get schema(): NodeSpec {
     return {
       attrs: {
         src: {
-          default: null,
+          default: '',
         },
+        width: {
+          default: 400,
+        },
+        height: {
+          default: 250,
+        }
       },
       group: 'block',
-      selectable: false,
+      draggable: true,
       parseDOM: [{
         tag: 'iframe',
-        // @ts-ignore
         getAttrs: dom => ({
+          // @ts-ignore
           src: dom.getAttribute('src'),
+          // @ts-ignore
+          width: dom.getAttribute('width') ? dom.getAttribute('width') : 400,
+          // @ts-ignore
+          height: dom.getAttribute('height') ? dom.getAttribute('height') : 250,
         }),
       }],
       toDOM: (node) => ['iframe', {
         src: node.attrs.src,
-        frameborder: 0,
+        width: node.attrs.width,
+        height: node.attrs.height,
+        frameborder: '0',
         allowfullscreen: 'true',
       }],
     };
@@ -43,31 +56,12 @@ export default class Iframe extends Node implements MenuBtnView {
   }
 
   get view(): any {
-    return {
-      props: ['node', 'updateAttrs', 'view'],
-      computed: {
-        src: {
-          get() {
-            return this.node.attrs.src;
-          },
-          set(src) {
-            this.updateAttrs({
-              src,
-            });
-          },
-        },
-      },
-      template: `
-        <div class="iframe">
-        <iframe class="iframe__embed" :src="src"></iframe>
-        </div>
-      `,
-    };
+    return IframeView;
   }
 
   menuBtnView(editorContext: MenuData) {
     return {
-      component: IframeCommandButton,
+      component: InsertIframeCommandButton,
       componentProps: {
         editorContext,
       },

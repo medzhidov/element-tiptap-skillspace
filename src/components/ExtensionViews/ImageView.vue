@@ -174,28 +174,30 @@
     }
 
     private async created() {
-      const result = await resolveImg(this.src);
+      // const result = await resolveImg(this.src);
+      //
+      // if (!result.complete) {
+      //   result.width = MIN_SIZE;
+      //   result.height = MIN_SIZE;
+      // }
+      //
+      // this.originalSize = {
+      //   width: result.width,
+      //   height: result.height,
+      //   aspectRatio: result.width / result.height
+      // };
+      //
+      // this.getMaxSize();
+      //
+      // const width = (this.width ?? result.width) <= this.maxSize.width ? (this.width ?? result.width) : this.maxSize.width;
 
-      if (!result.complete) {
-        result.width = MIN_SIZE;
-        result.height = MIN_SIZE;
-      }
-
-      this.originalSize = {
-        width: result.width,
-        height: result.height,
-        aspectRatio: result.width / result.height
-      };
-
-      this.getMaxSize();
-
-      const width = (this.width ?? result.width) <= this.maxSize.width ? (this.width ?? result.width) : this.maxSize.width;
-
-      this.updateAttrs({
-        width: width,
-        // Height should be flexible relative to width
-        height: null
-      });
+      setTimeout(() => {
+        this.updateAttrs({
+          // width: width,
+          // Height should be flexible relative to width
+          height: null
+        });
+      }, 500);
     }
 
     private mounted() {

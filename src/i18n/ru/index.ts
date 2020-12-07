@@ -100,13 +100,55 @@ export default {
           },
         },
       },
+      // Iframe: {
+      //   tooltip: 'Вставить медиа',
+      //   control: {
+      //     title: 'Вставить медиа',
+      //     placeholder: 'Адрес',
+      //     confirm: 'Вставить',
+      //     cancel: 'Отменить',
+      //   },
+      // },
       Iframe: {
-        tooltip: 'Вставить видео',
+        buttons: {
+          insert_iframe: {
+            tooltip: 'Вставить медиа',
+            external: 'Вставить медиа по ссылке',
+            upload: 'Загрузить медиа',
+          },
+          remove_iframe: {
+            tooltip: 'Удалить',
+          },
+          iframe_options: {
+            tooltip: 'Опции изображения',
+          },
+          display: {
+            tooltip: 'Положение',
+            inline: 'В строке текста',
+            block: 'Отдельно от текста',
+            left: 'Обтекание текста справа',
+            right: 'Обтекание текста слева',
+          },
+        },
         control: {
-          title: 'Вставить видео',
-          placeholder: 'Адрес',
-          confirm: 'Вставить',
-          cancel: 'Отменить',
+          insert_by_url: {
+            title: 'Вставить медиа',
+            placeholder: 'Адрес или embed код',
+            confirm: 'Вставить',
+            cancel: 'Отменить',
+            invalid_url: 'Пожалуйста введите правильный адрес',
+          },
+          edit_iframe: {
+            title: 'Редактировать медиа',
+            confirm: 'Обновить',
+            cancel: 'Отменить',
+            form: {
+              src: 'Адрес медиа',
+              alt: 'Альтернативный текст',
+              width: 'Ширина',
+              height: 'Высота',
+            },
+          },
         },
       },
       BulletList: {

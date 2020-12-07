@@ -1,6 +1,7 @@
 <template>
   <div class="el-tiptap-editor__wrapper">
     <el-tiptap
+      lang="en"
       :extensions="extensions"
       :content="content"
     />
@@ -9,6 +10,7 @@
 
 <script>
 import {
+  ElementTiptap,
   Doc,
   Text,
   Paragraph,
@@ -67,6 +69,9 @@ export default {
 
       content: '<h1>Bubble Menu</h1><p>Try to select some text here. There will popup a menu for some commands.</p><p>Pass a property <code>bubble: true</code> to extension is all you need to do.</p>',
     };
+  },
+  components: {
+    'el-tiptap': ElementTiptap,
   },
 };
 </script>

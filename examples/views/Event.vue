@@ -1,6 +1,7 @@
 <template>
   <div class="el-tiptap-editor__wrapper">
     <el-tiptap
+      lang="en"
       :extensions="extensions"
       :content="content"
       :editor-properties="editorProperties"
@@ -17,97 +18,102 @@
 </template>
 
 <script>
-/* eslint-disable no-console */
-import {
-  Doc,
-  Text,
-  Paragraph,
-  Heading,
-  Bold,
-  Underline,
-  Italic,
-  Strike,
-  Blockquote,
-  CodeBlock,
-  Image,
-  ListItem,
-  BulletList,
-  OrderedList,
-  TodoItem,
-  TodoList,
-  TextAlign,
-  Indent,
-  History,
-} from 'element-tiptap';
+  /* eslint-disable no-console */
+  import {
+    Blockquote,
+    Bold,
+    BulletList,
+    CodeBlock,
+    Doc,
+    ElementTiptap,
+    Heading,
+    History,
+    Image,
+    Indent,
+    Italic,
+    ListItem,
+    OrderedList,
+    Paragraph,
+    Strike,
+    Text,
+    TextAlign,
+    TodoItem,
+    TodoList,
+    Underline,
+  } from 'element-tiptap';
 
-export default {
-  data () {
-    return {
-      extensions: [
-        new Doc(),
-        new Text(),
-        new Paragraph(),
-        new Heading({ level: 5 }),
-        new Bold(),
-        new Underline(),
-        new Italic(),
-        new Strike(),
-        new Blockquote(),
-        new CodeBlock(),
-        new Image(),
-        new TextAlign(),
-        new ListItem(),
-        new BulletList(),
-        new OrderedList(),
-        new TodoItem(),
-        new TodoList(),
-        new Indent(),
-        new History(),
-      ],
+  export default {
+    data() {
+      return {
+        extensions: [
+          new Doc(),
+          new Text(),
+          new Paragraph(),
+          new Heading({level: 5}),
+          new Bold(),
+          new Underline(),
+          new Italic(),
+          new Strike(),
+          new Blockquote(),
+          new CodeBlock(),
+          new Image(),
+          new TextAlign(),
+          new ListItem(),
+          new BulletList(),
+          new OrderedList(),
+          new TodoItem(),
+          new TodoList(),
+          new Indent(),
+          new History(),
+        ],
 
-      editorProperties: {
-        editorProps: { // https://prosemirror.net/docs/ref/#view.EditorProps
-          handleKeyDown () {
-            console.log('🚀EditorProps: Keydown');
-          },
-          handleTextInput () {
-            console.log('🚀EditorProps: TextInput');
+        editorProperties: {
+          editorProps: { // https://prosemirror.net/docs/ref/#view.EditorProps
+            handleKeyDown() {
+              console.log('🚀EditorProps: Keydown');
+            },
+            handleTextInput() {
+              console.log('🚀EditorProps: TextInput');
+            },
           },
         },
+
+        content: '<p><img src="https://i.ibb.co/4pJs2Lx/undraw-static-assets-rpm6.png" width="300"></p><p>Open <strong>Console</strong>, your action on the editor will be logged.</p>',
+      };
+    },
+
+    methods: {
+      onInitEvent() {
+        console.log('🔥init');
       },
 
-      content: '<p><img src="https://i.ibb.co/4pJs2Lx/undraw-static-assets-rpm6.png" width="300"></p><p>Open <strong>Console</strong>, your action on the editor will be logged.</p>',
-    };
-  },
+      onTransactionEvent() {
+        console.log('🔥transaction');
+      },
 
-  methods: {
-    onInitEvent () {
-      console.log('🔥init');
+      onFocusEvent() {
+        console.log('🔥focus');
+      },
+
+      onBlurEvent() {
+        console.log('🔥blur');
+      },
+
+      onPasteEvent() {
+        console.log('🔥paste');
+      },
+
+      onDropEvent() {
+        console.log('🔥drop');
+      },
+
+      onUpdateEvent() {
+        console.log('🔥update');
+      },
     },
 
-    onTransactionEvent () {
-      console.log('🔥transaction');
+    components: {
+      'el-tiptap': ElementTiptap,
     },
-
-    onFocusEvent () {
-      console.log('🔥focus');
-    },
-
-    onBlurEvent () {
-      console.log('🔥blur');
-    },
-
-    onPasteEvent () {
-      console.log('🔥paste');
-    },
-
-    onDropEvent () {
-      console.log('🔥drop');
-    },
-
-    onUpdateEvent () {
-      console.log('🔥update');
-    },
-  },
-};
+  };
 </script>

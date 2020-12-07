@@ -14,6 +14,7 @@ declare module 'tiptap-extensions' {
     constructor (options?: { levels?: number[] });
   }
   class Image extends Node {}
+  class Iframe extends Node {}
   class Blockquote extends Node {}
   class CodeBlock extends Node {}
   class ListItem extends Node {}

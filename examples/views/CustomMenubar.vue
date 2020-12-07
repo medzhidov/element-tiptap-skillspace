@@ -1,6 +1,7 @@
 <template>
   <div class="el-tiptap-editor__wrapper">
     <el-tiptap
+      lang="en"
       :extensions="extensions"
       :content="content1"
     >
@@ -24,6 +25,7 @@
     </el-tiptap>
 
     <el-tiptap
+      lang="en"
       :extensions="extensions"
       :content="content2"
     />
@@ -32,6 +34,7 @@
 
 <script>
 import {
+  ElementTiptap,
   Doc,
   Text,
   Paragraph,
@@ -81,6 +84,9 @@ export default {
       content1: '<p>You can customize the menubar (also bubble menu) with your design.</p>',
       content2: '<p>The order in which you specify the extensions affects the order of the buttons.',
     };
+  },
+  components: {
+    'el-tiptap': ElementTiptap,
   },
 };
 </script>

@@ -1,6 +1,7 @@
 <template>
   <div class="el-tiptap-editor__wrapper">
     <el-tiptap
+      lang="en"
       :extensions="extensions"
       :content="content"
       :readonly="true"
@@ -10,6 +11,7 @@
 
 <script>
 import {
+  ElementTiptap,
   Doc,
   Text,
   Paragraph,
@@ -50,6 +52,9 @@ export default {
 
       content: '<p>I\' m non-editable now. 😰</p><p></p><p>pass prop <code>readonly: true</code> to the editor.</p>',
     };
+  },
+  components: {
+    'el-tiptap': ElementTiptap,
   },
 };
 </script>

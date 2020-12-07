@@ -4,7 +4,7 @@
       :command="openEditImageDialog"
       :enable-tooltip="et.tooltip"
       :tooltip="et.t('editor.extensions.Image.buttons.image_options.tooltip')"
-      icon="ellipsis-h"
+      icon="sliders-h"
     />
 
     <el-dialog

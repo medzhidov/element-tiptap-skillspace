@@ -1,6 +1,7 @@
 <template>
   <div class="el-tiptap-editor__wrapper">
     <el-tiptap
+      lang="en"
       :extensions="extensions"
       placeholder="Do you like this editor ? 👏"
     />
@@ -9,6 +10,7 @@
 
 <script>
 import {
+  ElementTiptap,
   Doc,
   Text,
   Paragraph,
@@ -39,6 +41,9 @@ export default {
         new History(),
       ],
     };
+  },
+  components: {
+    'el-tiptap': ElementTiptap,
   },
 };
 </script>

@@ -1,6 +1,7 @@
 <template>
   <div class="el-tiptap-editor__wrapper">
     <el-tiptap
+      lang="en"
       :extensions="extensions"
       :content="content"
     />
@@ -9,6 +10,8 @@
 
 <script>
 import {
+  ElementTiptap,
+  Title,
   Doc,
   Text,
   Paragraph,
@@ -31,6 +34,7 @@ export default {
     return {
       extensions: [
         new Doc({ title: true }),
+        new Title(),
         new Text(),
         new Paragraph(),
         new Heading({ level: 3 }),
@@ -48,6 +52,9 @@ export default {
       ],
       content: '<h1>Title Line</h1><p>The body content</p>',
     };
+  },
+  components: {
+    'el-tiptap': ElementTiptap,
   },
 };
 </script>

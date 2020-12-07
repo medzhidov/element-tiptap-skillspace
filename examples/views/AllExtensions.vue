@@ -1,16 +1,19 @@
 <template>
   <div class="el-tiptap-editor__wrapper">
     <el-tiptap
+      lang="en"
       :extensions="textExtensions"
       content="Text Extensions"
     />
 
     <el-tiptap
+      lang="en"
       :extensions="paragraphExtensions"
       content="Paragraph Extensions"
     />
 
     <el-tiptap
+      lang="en"
       :extensions="richAndToolsExtensions"
       content="Rich And Tools Extensions"
     />
@@ -19,6 +22,7 @@
 
 <script>
 import {
+  ElementTiptap,
   Doc,
   Text,
   Paragraph,
@@ -132,6 +136,9 @@ export default {
         new History(),
       ],
     };
+  },
+  components: {
+    'el-tiptap': ElementTiptap,
   },
 };
 </script>
