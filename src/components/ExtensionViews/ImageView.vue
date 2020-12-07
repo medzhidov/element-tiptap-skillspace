@@ -126,6 +126,7 @@
     originalSize = {
       width: 0,
       height: 0,
+      aspectRatio: 0
     };
 
     resizeOb = new ResizeObserver(() => {
@@ -183,7 +184,18 @@
       this.originalSize = {
         width: result.width,
         height: result.height,
+        aspectRatio: result.width / result.height
       };
+
+      this.getMaxSize();
+
+      const width = result.width <= this.maxSize.width ? result.width : this.maxSize.width;
+
+      this.updateAttrs({
+        width: width,
+        // Height should be flexible relative to width
+        height: null
+      });
     }
 
     private mounted() {
@@ -222,20 +234,20 @@
 
       const originalWidth = this.originalSize.width;
       const originalHeight = this.originalSize.height;
-      const aspectRatio = originalWidth / originalHeight;
+      const originalAspectRatio = this.originalSize.aspectRatio;
 
       let {width, height} = this.node.attrs;
       const maxWidth = this.maxSize.width;
 
       if (width && !height) {
         width = width > maxWidth ? maxWidth : width;
-        height = Math.round(width / aspectRatio);
+        height = Math.round(width / originalAspectRatio);
       } else if (height && !width) {
-        width = Math.round(height * aspectRatio);
+        width = Math.round(height * originalAspectRatio);
         width = width > maxWidth ? maxWidth : width;
       } else if (!width && !height) {
         width = originalWidth > maxWidth ? maxWidth : originalWidth;
-        height = Math.round(width / aspectRatio);
+        height = Math.round(width / originalAspectRatio);
       } else {
         width = width > maxWidth ? maxWidth : width;
       }
@@ -256,17 +268,15 @@
 
       const {x, y, w, h, dir} = this.resizerState;
 
-      const aspectRatio = w / h;
+      const aspectRatio = this.originalSize.width;
 
       const dx = (e.clientX - x) * (/l/.test(dir) ? -1 : 1);
       const dy = (e.clientY - y) * (/t/.test(dir) ? -1 : 1);
 
-      const newWidth = clamp(w + dx, MIN_SIZE, this.maxSize.width),
-        newHeight = clamp(h + dy, MIN_SIZE / aspectRatio, this.maxSize.width / aspectRatio);
+      const newWidth = clamp(w + dx, MIN_SIZE, this.maxSize.width);
 
       this.updateAttrs({
-        width: newWidth,
-        height: newWidth / aspectRatio
+        width: newWidth
       });
     }
 
