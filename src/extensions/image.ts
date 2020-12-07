@@ -1,17 +1,18 @@
 // @ts-nocheck
-import { Node as ProsemirrorNode, DOMOutputSpec } from 'prosemirror-model';
-import { Image as TiptapImage } from 'tiptap-extensions';
-import { MenuData } from 'tiptap';
-import { MenuBtnView } from '@/../types';
-import { ImageDisplay } from '@/utils/image';
-import { DEFAULT_IMAGE_WIDTH, DEFAULT_IMAGE_DISPLAY, DEFAULT_IMAGE_URL_REGEX } from '@/constants';
+import {DOMOutputSpec, Node as ProsemirrorNode} from 'prosemirror-model';
+import {Plugin} from 'prosemirror-state';
+import {Image as TiptapImage} from 'tiptap-extensions';
+import {MenuData} from 'tiptap';
+import {MenuBtnView} from '@/../types';
+import {ImageDisplay} from '@/utils/image';
+import {DEFAULT_IMAGE_DISPLAY, DEFAULT_IMAGE_URL_REGEX, DEFAULT_IMAGE_WIDTH} from '@/constants';
 import InsertImageCommandButton from '@/components/MenuCommands/Image/InsertImageCommandButton.vue';
 import ImageView from '@/components/ExtensionViews/ImageView.vue';
 
 // @ts-ignore
-function getAttrs (dom: HTMLElement): { [key: string]: any } {
-  const { cssFloat, display } = dom.style;
-  let { width, height } = dom.style;
+function getAttrs(dom: HTMLElement): { [key: string]: any } {
+  const {cssFloat, display} = dom.style;
+  let {width, height} = dom.style;
 
   let dp = dom.getAttribute('data-display') || dom.getAttribute('display');
   if (dp) {
@@ -39,8 +40,8 @@ function getAttrs (dom: HTMLElement): { [key: string]: any } {
   };
 }
 
-function toDOM (node: ProsemirrorNode): DOMOutputSpec {
-  const { src, alt, title, width, height, display } = node.attrs;
+function toDOM(node: ProsemirrorNode): DOMOutputSpec {
+  const {src, alt, title, width, height, display} = node.attrs;
 
   const attrs: { [key: string]: any } = {
     src,
@@ -56,7 +57,7 @@ function toDOM (node: ProsemirrorNode): DOMOutputSpec {
 }
 
 export default class Image extends TiptapImage implements MenuBtnView {
-  get defaultOptions () {
+  get defaultOptions() {
     return {
       defaultWidth: DEFAULT_IMAGE_WIDTH,
       defaultDisplay: DEFAULT_IMAGE_DISPLAY,
@@ -65,7 +66,7 @@ export default class Image extends TiptapImage implements MenuBtnView {
     };
   }
 
-  get schema () {
+  get schema() {
     return {
       inline: true,
       attrs: {
@@ -94,16 +95,16 @@ export default class Image extends TiptapImage implements MenuBtnView {
       },
       group: 'inline',
       draggable: true,
-      parseDOM: [{ tag: 'img[src]', getAttrs }],
+      parseDOM: [{tag: 'img[src]', getAttrs}],
       toDOM,
     };
   }
 
-  get view () {
+  get view() {
     return ImageView;
   }
 
-  menuBtnView (editorContext: MenuData) {
+  menuBtnView(editorContext: MenuData) {
     return {
       component: InsertImageCommandButton,
       componentProps: {
