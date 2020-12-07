@@ -38,6 +38,7 @@ import 'vue-awesome/icons/sliders-h';
 import 'vue-awesome/icons/regular/trash-alt';
 import 'vue-awesome/icons/photo-video';
 import 'vue-awesome/icons/code';
+import 'vue-awesome/icons/cog';
 import 'vue-awesome/icons/quote-right';
 import 'vue-awesome/icons/align-left';
 import 'vue-awesome/icons/align-center';

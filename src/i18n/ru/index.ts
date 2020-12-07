@@ -70,7 +70,7 @@ export default {
           display: {
             tooltip: 'Положение',
             inline: 'В строке текста',
-            block: 'Отдельно от текста',
+            block: 'На отдельной строке',
             left: 'Обтекание текста справа',
             right: 'Обтекание текста слева',
           },
@@ -111,7 +111,7 @@ export default {
             tooltip: 'Удалить',
           },
           iframe_options: {
-            tooltip: 'Опции изображения',
+            tooltip: 'Опции медиа',
           },
         },
         control: {

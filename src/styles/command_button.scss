@@ -40,6 +40,8 @@
 }
 
 .el-tiptap-dropdown-menu {
+  font-family: sans-serif;
+
   $menu: &;
 
   #{$menu}__item {
@@ -61,6 +63,8 @@
 }
 
 .el-tiptap-popper {
+  font-family: sans-serif;
+
   &.el-popper {
     min-width: 0;
   }
@@ -257,6 +261,10 @@
   }
 }
 
+.el-dialog {
+  font-family: sans-serif;
+}
+
 .el-tiptap-edit-iframe-dialog {
   .el-form-item:last-child {
     margin-bottom: 0;
@@ -300,4 +308,8 @@
     display: flex;
     flex-direction: row;
   }
+}
+
+.el-tooltip__popper {
+  font-family: sans-serif;
 }

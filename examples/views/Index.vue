@@ -71,6 +71,10 @@ export default {
         route: 'AllExtensions',
       },
       {
+        label: 'Floating menu',
+        route: 'Floating',
+      },
+      {
         label: 'Bubble Menu',
         route: 'BubbleMenu',
       },

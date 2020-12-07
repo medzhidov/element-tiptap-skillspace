@@ -4,7 +4,7 @@
       :command="openEditIframeDialog"
       :enable-tooltip="et.tooltip"
       :tooltip="et.t('editor.extensions.Iframe.buttons.iframe_options.tooltip')"
-      icon="sliders-h"
+      icon="cog"
     />
 
     <el-dialog
@@ -53,7 +53,6 @@
       <template #footer>
         <el-button
           size="small"
-          round
           @click="closeEditIframeDialog"
         >
           {{ et.t('editor.extensions.Iframe.control.edit_iframe.cancel') }}
@@ -62,7 +61,6 @@
         <el-button
           type="primary"
           size="small"
-          round
           @click="updateIframeAttrs"
         >
           {{ et.t('editor.extensions.Iframe.control.edit_iframe.confirm') }}

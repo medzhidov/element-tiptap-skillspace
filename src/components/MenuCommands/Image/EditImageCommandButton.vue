@@ -4,7 +4,7 @@
       :command="openEditImageDialog"
       :enable-tooltip="et.tooltip"
       :tooltip="et.t('editor.extensions.Image.buttons.image_options.tooltip')"
-      icon="sliders-h"
+      icon="cog"
     />
 
     <el-dialog
@@ -61,7 +61,6 @@
       <template #footer>
         <el-button
           size="small"
-          round
           @click="closeEditImageDialog"
         >
           {{ et.t('editor.extensions.Image.control.edit_image.cancel') }}
@@ -70,7 +69,6 @@
         <el-button
           type="primary"
           size="small"
-          round
           @click="updateImageAttrs"
         >
           {{ et.t('editor.extensions.Image.control.edit_image.confirm') }}

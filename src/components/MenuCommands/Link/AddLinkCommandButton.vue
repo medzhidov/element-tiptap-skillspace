@@ -41,7 +41,6 @@
       <template #footer>
         <el-button
           size="small"
-          round
           @click="closeAddLinkDialog"
         >
           {{ et.t('editor.extensions.Link.add.control.cancel') }}
@@ -50,7 +49,6 @@
         <el-button
           type="primary"
           size="small"
-          round
           @mousedown.prevent
           @click="addLink"
         >
