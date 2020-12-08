@@ -5,7 +5,7 @@
     :tooltip="et.t('editor.extensions.CodeView.tooltip')"
     :is-active="isHeadingActive"
   >
-    <div slot="icon">
+    <div class="el-tiptap-editor__command-button__heading" slot="icon">
       <v-icon name="heading" />
       <span class="el-tiptap-editor__command-button__heading__level" v-text="level"></span>
     </div>

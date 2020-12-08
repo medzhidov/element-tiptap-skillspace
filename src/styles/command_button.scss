@@ -38,14 +38,13 @@
     }
 
     &__heading {
+      display: flex;
+      align-items: center;
+
       &__level {
-        font-size: 20px;
+        font-size: 18px;
+        height: 17px;
         font-weight: bold;
-        height: 18px;
-        display: inline-block;
-        vertical-align: middle;
-        position: relative;
-        top: -.2em;
       }
     }
   }
