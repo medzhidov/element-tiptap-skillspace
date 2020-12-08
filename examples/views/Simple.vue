@@ -1,7 +1,7 @@
 <template>
   <div class="el-tiptap-editor__wrapper">
     <el-tiptap
-      lang="ru"
+      lang="en"
       :extensions="extensions"
       :content="content"
       :spellcheck="false"
@@ -57,7 +57,18 @@
           new Doc(),
           new Text(),
           new Paragraph(),
-          new Heading({level: 5}),
+          new Heading({
+            level: 2,
+            singleLevel: true
+          }),
+          new Heading({
+            level: 3,
+            singleLevel: true
+          }),
+          new Heading({
+            level: 4,
+            singleLevel: true
+          }),
           new Bold({bubble: true}),
           new Underline({bubble: true}),
           new Italic({bubble: true}),

@@ -638,6 +638,14 @@
 
   .ProseMirror {
     outline: 0;
+
+    &-focused {
+      .el-tiptap-editor__placeholder.el-tiptap-editor--empty:first-child:before,
+      .el-tiptap-editor__with-title-placeholder:first-child:before,
+      .el-tiptap-editor__with-title-placeholder:nth-child(2):before {
+        opacity: 0;
+      }
+    }
   }
 
   &__placeholder {
@@ -647,6 +655,7 @@
       float: left;
       height: 0;
       pointer-events: none;
+      transition: .1s ease;
     }
   }
 

@@ -4,6 +4,7 @@ import { Heading as TiptapHeading } from 'tiptap-extensions';
 import { MenuData } from 'tiptap';
 import { MenuBtnView } from '@/../types';
 import HeadingDropdown from '@/components/MenuCommands/HeadingDropdown.vue';
+import HeadingCommandButton from "@/components/MenuCommands/HeadingCommandButton.vue";
 import { ParagraphNodeSpec, getParagraphNodeAttrs, toParagraphDOM } from './paragraph';
 
 // @ts-ignore
@@ -31,6 +32,9 @@ export default class Heading extends TiptapHeading implements MenuBtnView {
         level: {
           default: 1,
         },
+        singleLevel: {
+          default: false,
+        },
       },
       defining: true,
       draggable: false,
@@ -44,9 +48,10 @@ export default class Heading extends TiptapHeading implements MenuBtnView {
 
   menuBtnView (editorContext: MenuData) {
     return {
-      component: HeadingDropdown,
+      component: this.options.singleLevel ? HeadingCommandButton : HeadingDropdown,
       componentProps: {
         editorContext,
+        level: this.options.level
       },
     };
   }

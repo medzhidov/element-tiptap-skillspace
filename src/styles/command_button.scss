@@ -36,6 +36,18 @@
         background-color: transparent;
       }
     }
+
+    &__heading {
+      &__level {
+        font-size: 20px;
+        font-weight: bold;
+        height: 18px;
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        top: -.2em;
+      }
+    }
   }
 }
 
@@ -285,7 +297,7 @@
 .el-popper.el-tiptap-image-popper {
   background-color: $white-color;
   border-radius: 8px;
-  box-shadow: 0 3px 5px -1px rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12);
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
   min-width: 0;
   padding: 5px;
 
@@ -299,7 +311,7 @@
 .el-popper.el-tiptap-iframe-popper {
   background-color: $white-color;
   border-radius: 8px;
-  box-shadow: 0 3px 5px -1px rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12);
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
   min-width: 0;
   padding: 5px;
 
