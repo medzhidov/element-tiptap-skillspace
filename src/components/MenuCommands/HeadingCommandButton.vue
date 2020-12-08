@@ -36,7 +36,7 @@
       type: Number,
       required: true,
     })
-    readonly level!: MenuData;
+    readonly level!: number;
 
     @Inject() readonly et!: any;
 
