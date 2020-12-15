@@ -29,12 +29,10 @@
 </template>
 
 <script lang="ts">
-import Icon from 'vue-awesome/components/Icon.vue';
 import { Component, Prop, Vue, Inject, Watch } from 'vue-property-decorator';
 import { Editor, EditorFloatingMenu, MenuData } from 'tiptap';
 // @ts-ignore
 import { getMarkRange } from 'tiptap-utils';
-import { TextSelection, AllSelection, Selection } from 'prosemirror-state';
 import { MenuBtnViewType } from '@/../types';
 
 const enum MenuType {
@@ -45,7 +43,6 @@ const enum MenuType {
 
 @Component({
   components: {
-    'v-icon': Icon,
     EditorFloatingMenu
   },
 })

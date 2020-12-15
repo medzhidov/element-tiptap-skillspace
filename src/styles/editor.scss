@@ -3,13 +3,13 @@
 .el-tiptap-editor {
   $root: &;
 
-  box-sizing: border-box;
-  border-radius: 8px;
   display: flex;
   flex-direction: column;
+  width: 100%;
   max-height: 100%;
   position: relative;
-  width: 100%;
+  border-radius: 8px;
+  box-sizing: border-box;
 
   * {
     box-sizing: border-box;
@@ -21,16 +21,16 @@
   }
 
   .border-bottom-radius {
-    border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
   }
 
   &__codemirror {
     display: flex;
     flex-grow: 1;
+    overflow: scroll;
     font-size: 16px;
     line-height: 24px;
-    overflow: scroll;
 
     .CodeMirror {
       flex-grow: 1;
@@ -39,16 +39,16 @@
   }
 
   &--fullscreen {
-    border-radius: 0 !important;
-    bottom: 0 !important;
-    height: 100% !important;
-    left: 0 !important;
     margin: 0 !important;
-    position: fixed !important;
-    right: 0 !important;
-    top: 0 !important;
     width: 100% !important;
+    height: 100% !important;
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
     z-index: 500;
+    border-radius: 0 !important;
 
     #{$root}__menu-bar,
     #{$root}__content,
@@ -58,86 +58,97 @@
   }
 
   > #{$root}__content {
-    background-color: $white-color;
-    border: 1px solid $lighter-border-color;
-    border-bottom: 0;
-    border-top: 0;
-    color: $black-color;
-    flex-grow: 1;
     padding: 30px 20px;
+    border: 1px solid $lighter-border-color;
+    border-top: 0;
+    border-bottom: 0;
+    flex-grow: 1;
+    color: $black-color;
+    background-color: $white-color;
   }
 
   &__menu-bar {
-    background-color: $white-color;
+    padding: 5px;
     border: 1px solid $lighter-border-color;
     border-bottom: 0;
     display: flex;
     flex-shrink: 0;
     flex-wrap: wrap;
-    padding: 5px;
     position: relative;
+    background-color: $white-color;
 
     &::before {
-      bottom: 0;
-      background-color: $lighter-border-color;
       content: '';
-      height: 1px;
-      left: 0;
       margin: 0 10px;
-      right: 0;
+      height: 1px;
       position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: $lighter-border-color;
     }
   }
 
   &__menu-bubble {
+    padding: 5px;
+    display: flex;
+    position: absolute;
+    z-index: 50;
+    visibility: hidden;
+    opacity: 0;
     background-color: $white-color;
     border-radius: 8px;
     box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
-    display: flex;
-    padding: 5px;
-    opacity: 0;
-    position: absolute;
     transform: translateX(-50%);
     transition: opacity .3s ease-in-out;
-    visibility: hidden;
-    z-index: 50;
 
     &--active {
-      opacity: 1;
       visibility: visible;
+      opacity: 1;
     }
   }
 
   &__menu-floating {
     display: flex;
-    opacity: 0;
     position: absolute;
-    transition: opacity .1s ease-in-out;
-    visibility: hidden;
     left: 20px;
     z-index: 1;
+    visibility: hidden;
+    opacity: 0;
     transform: translateY(-14px);
+    transition: opacity .1s ease-in-out;
+    pointer-events: none;
+
+    & > * {
+      opacity: .6;
+      transform: scale(0.9);
+
+      &:hover {
+        opacity: 1;
+      }
+    }
 
     &--active {
-      opacity: 1;
+      pointer-events: all;
       visibility: visible;
+      opacity: 1;
     }
   }
 
   &__content {
-    box-sizing: border-box;
-    //font-family: sans-serif;
     line-height: 1.7;
-    overflow-x: auto;
+    //font-family: sans-serif;
     text-align: left;
+    box-sizing: border-box;
+    overflow-x: auto;
 
     > * {
       box-sizing: border-box;
     }
 
     p {
-      margin-bottom: 0;
       margin-top: 0;
+      margin-bottom: 0;
       outline: none;
     }
 
@@ -162,12 +173,12 @@
     ol {
       counter-reset: none;
       list-style-type: none;
+      margin-top: 0;
       margin-bottom: 0;
       margin-left: 24px;
-      margin-top: 0;
+      padding-top: 5px;
       padding-bottom: 5px;
       padding-left: 0;
-      padding-top: 5px;
     }
 
     li > p {
@@ -175,14 +186,14 @@
 
       &:first-child::before {
         content: counter(el-tiptap-counter) '.';
+        margin-left: -24px;
         display: inline-block;
+        width: 24px;
+        position: relative;
+        top: 0;
         left: -5px;
         line-height: 1;
-        margin-left: -24px;
-        position: relative;
         text-align: right;
-        top: 0;
-        width: 24px;
       }
     }
 
@@ -207,53 +218,53 @@
     }
 
     blockquote {
-      border-left: 5px solid #edf2fc;
-      border-radius: 2px;
-      color: $regular-text-color;
       margin: 10px 0;
       padding-left: 1em;
+      border-left: 5px solid #edf2fc;
+      color: $regular-text-color;
+      border-radius: 2px;
     }
 
     code {
+      padding: 0 8px;
+      display: inline-block;
+      color: $primary-color;
       background-color: $lighter-primary-color;
       border-radius: 4px;
-      color: $primary-color;
-      display: inline-block;
       font-size: 14px;
       font-weight: 700;
-      padding: 0 8px;
     }
 
     pre {
-      background-color: $primary-text-color;
+      margin: 10px 0;
+      padding: 14px 20px;
       color: $lighter-primary-color;
+      background-color: $primary-text-color;
+      border-radius: 5px;
       font-size: 16px;
       overflow-x: auto;
-      padding: 14px 20px;
-      margin: 10px 0;
-      border-radius: 5px;
 
       code {
+        padding: 0;
+        display: block;
+        color: inherit;
         background-color: transparent;
         border-radius: 0;
-        color: inherit;
-        display: block;
         font-family: 'Menlo,Monaco,Consolas,Courier,monospace';
         font-size: inherit;
         font-weight: normal;
-        padding: 0;
       }
     }
 
     img {
-      display: inline-block;
-      float: none;
       margin: 12px 0;
+      display: inline-block;
       max-width: 100%;
+      float: none;
 
       &[data-display=inline] {
-        margin-left: 12px;
         margin-right: 12px;
+        margin-left: 12px;
       }
 
       &[data-display=block] {
@@ -261,32 +272,32 @@
       }
 
       &[data-display=left] {
-        float: left;
-        margin-left: 0;
         margin-right: 12px;
+        margin-left: 0;
+        float: left;
       }
 
       &[data-display=right] {
-        float: right;
-        margin-left: 12px;
         margin-right: 0;
+        margin-left: 12px;
+        float: right;
       }
     }
 
     .image-view {
       $root: &;
 
+      margin: 12px 0;
       display: inline-block;
+      max-width: 100%;
       float: none;
       line-height: 0;
-      margin: 12px 0;
-      max-width: 100%;
-      user-select: none;
       vertical-align: baseline;
+      user-select: none;
 
       &--inline {
-        margin-left: 12px;
         margin-right: 12px;
+        margin-left: 12px;
       }
 
       &--block {
@@ -294,26 +305,26 @@
       }
 
       &--left {
-        float: left;
-        margin-left: 0;
         margin-right: 12px;
+        margin-left: 0;
+        float: left;
       }
 
       &--right {
-        float: right;
-        margin-left: 12px;
         margin-right: 0;
+        margin-left: 12px;
+        float: right;
       }
 
       &__body {
-        clear: both;
         display: inline-block;
         max-width: 100%;
-        outline-color: transparent;
-        outline-style: solid;
-        outline-width: 2px;
-        transition: all .2s ease-in;
         position: relative;
+        clear: both;
+        transition: all .2s ease-in;
+        outline-style: solid;
+        outline-color: transparent;
+        outline-width: 2px;
 
         &:hover {
           outline-color: #ffc83d;
@@ -325,63 +336,63 @@
         }
 
         &__placeholder {
+          width: 100%;
           height: 100%;
-          left: 0;
           position: absolute;
           top: 0;
-          width: 100%;
+          left: 0;
           z-index: -1;
         }
 
         &__image {
-          cursor: pointer;
           margin: 0;
+          cursor: pointer;
         }
       }
     }
 
     .image-resizer {
       border: 1px solid $primary-color;
+      width: 100%;
       height: 100%;
-      left: 0;
       position: absolute;
       top: 0;
-      width: 100%;
+      left: 0;
       z-index: 1;
 
       &__handler {
-        background-color: $primary-color;
         border: 1px solid $white-color;
-        border-radius: 2px;
-        box-sizing: border-box;
         display: block;
+        width: 12px;
         height: 12px;
         position: absolute;
-        width: 12px;
         z-index: 2;
+        background-color: $primary-color;
+        border-radius: 2px;
+        box-sizing: border-box;
 
         &--tl {
-          cursor: nw-resize;
-          left: -6px;
           top: -6px;
+          left: -6px;
+          cursor: nw-resize;
         }
 
         &--tr {
-          cursor: ne-resize;
-          right: -6px;
           top: -6px;
+          right: -6px;
+          cursor: ne-resize;
         }
 
         &--bl {
           bottom: -6px;
-          cursor: sw-resize;
           left: -6px;
+          cursor: sw-resize;
         }
 
         &--br {
+          right: -6px;
           bottom: -6px;
           cursor: se-resize;
-          right: -6px;
         }
       }
     }
@@ -390,10 +401,10 @@
       margin-left: 5px;
 
       .todo-item {
+        margin-bottom: 0;
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
-        margin-bottom: 0;
 
         &[data-text-align=right] {
           justify-content: flex-end !important;
@@ -452,21 +463,21 @@
     }
 
     table {
-      border-collapse: collapse;
       table-layout: fixed;
-      width: 100%;
+      border-collapse: collapse;
       margin: 0;
+      width: 100%;
       overflow: hidden;
     }
 
     th,
     td {
-      border: 2px solid $lighter-border-color;
-      box-sizing: border-box;
-      min-width: 1em;
       padding: 3px 5px;
+      border: 2px solid $lighter-border-color;
+      min-width: 1em;
       position: relative;
       vertical-align: top;
+      box-sizing: border-box;
 
       &.selectedCell {
         background-color: $extra-light-primary-color;
@@ -479,46 +490,46 @@
     }
 
     .column-resize-handle {
-      background-color: $light-primary-color;
-      bottom: 0;
-      pointer-events: none;
-      position: absolute;
-      right: -2px;
-      top: 0;
       width: 4px;
+      position: absolute;
+      top: 0;
+      right: -2px;
+      bottom: 0;
       z-index: 20;
+      background-color: $light-primary-color;
+      pointer-events: none;
     }
 
     .iframe {
-      height: 0;
       padding-bottom: 56.25%;
-      position: relative;
       width: 100%;
+      height: 0;
+      position: relative;
 
       &__embed {
         border: 0;
+        width: 100%;
         height: 100%;
-        left: 0;
         position: absolute;
         top: 0;
-        width: 100%;
+        left: 0;
       }
     }
 
     .iframe-view {
       $root: &;
 
+      margin: 12px 0;
       display: inline-block;
+      max-width: 100%;
       float: none;
       line-height: 0;
-      margin: 12px 0;
-      max-width: 100%;
-      user-select: none;
       vertical-align: baseline;
+      user-select: none;
 
       &--inline {
-        margin-left: 12px;
         margin-right: 12px;
+        margin-left: 12px;
       }
 
       &--block {
@@ -526,26 +537,26 @@
       }
 
       &--left {
-        float: left;
-        margin-left: 0;
         margin-right: 12px;
+        margin-left: 0;
+        float: left;
       }
 
       &--right {
-        float: right;
-        margin-left: 12px;
         margin-right: 0;
+        margin-left: 12px;
+        float: right;
       }
 
       &__body {
-        clear: both;
         display: inline-block;
         max-width: 100%;
-        outline-color: transparent;
-        outline-style: solid;
-        outline-width: 2px;
-        transition: all .2s ease-in;
         position: relative;
+        clear: both;
+        transition: all .2s ease-in;
+        outline-style: solid;
+        outline-color: transparent;
+        outline-width: 2px;
 
         &:hover {
           outline-color: #ffc83d;
@@ -557,64 +568,64 @@
         }
 
         &__placeholder {
+          width: 100%;
           height: 100%;
-          left: 0;
           position: absolute;
           top: 0;
-          width: 100%;
+          left: 0;
           z-index: -1;
         }
 
         &__embed {
+          margin: 0;
           cursor: pointer;
           pointer-events: none;
-          margin: 0;
         }
       }
     }
 
     .iframe-resizer {
       border: 1px solid $primary-color;
+      width: 100%;
       height: 100%;
-      left: 0;
       position: absolute;
       top: 0;
-      width: 100%;
+      left: 0;
       z-index: 1;
 
       &__handler {
-        background-color: $primary-color;
         border: 1px solid $white-color;
-        border-radius: 2px;
-        box-sizing: border-box;
         display: block;
+        width: 12px;
         height: 12px;
         position: absolute;
-        width: 12px;
         z-index: 2;
+        background-color: $primary-color;
+        border-radius: 2px;
+        box-sizing: border-box;
 
         &--tl {
-          cursor: nw-resize;
-          left: -6px;
           top: -6px;
+          left: -6px;
+          cursor: nw-resize;
         }
 
         &--tr {
-          cursor: ne-resize;
-          right: -6px;
           top: -6px;
+          right: -6px;
+          cursor: ne-resize;
         }
 
         &--bl {
           bottom: -6px;
-          cursor: sw-resize;
           left: -6px;
+          cursor: sw-resize;
         }
 
         &--br {
+          right: -6px;
           bottom: -6px;
           cursor: se-resize;
-          right: -6px;
         }
       }
     }
@@ -626,14 +637,14 @@
   }
 
   &__footer {
-    align-items: center;
-    background-color: $white-color;
+    padding: 10px;
     border: 1px solid $lighter-border-color;
     display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: $white-color;
     font-family: sans-serif;
     font-size: 14px;
-    justify-content: flex-end;
-    padding: 10px;
   }
 
   .ProseMirror {
@@ -650,22 +661,22 @@
 
   &__placeholder {
     &.el-tiptap-editor--empty:first-child::before {
-      color: $placeholder-text-color;
       content: attr(data-empty-text);
-      float: left;
       height: 0;
-      pointer-events: none;
+      float: left;
+      color: $placeholder-text-color;
       transition: .1s ease;
+      pointer-events: none;
     }
   }
 
   &__with-title-placeholder {
     &:nth-child(1)::before,
     &:nth-child(2)::before {
-      color: $placeholder-text-color;
       content: attr(data-empty-text);
-      float: left;
       height: 0;
+      float: left;
+      color: $placeholder-text-color;
       pointer-events: none;
     }
   }
