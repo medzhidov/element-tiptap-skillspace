@@ -87,24 +87,14 @@ declare module 'tiptap' {
   }
 
   class Mark<V extends NodeView = any> extends Extension {
-    private _schema?: MarkSpec;
     // @ts-ignore
-    set schema(value: MarkSpec) {
-      this._schema = value;
-    }
+    set schema(value: MarkSpec);
     // @ts-ignore
-    get schema(): MarkSpec {
-      return this._schema;
-    }
-    private _view?: { new(): V };
+    get schema(): MarkSpec;
     // @ts-ignore
-    get view(): { new(): V } {
-      return this._view;
-    }
+    get view(): { new(): V };
     // @ts-ignore
-    set view(value: { new(): V }) {
-      this._view = value;
-    }
+    set view(value: { new(): V });
     commands? ({ type, schema, attrs } : { type: MarkType, schema: MarkSpec, attrs?: { [key: string]: string }}): CommandGetter;
     inputRules? ({ type, schema }: { type: MarkType, schema: Schema }): any[];
     parseRules? ({ type, schema }: { type: MarkType, schema: Schema }): Plugin[];

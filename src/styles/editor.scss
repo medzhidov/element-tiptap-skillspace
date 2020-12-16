@@ -684,4 +684,13 @@
   &__characters {
     color: lighten($regular-text-color, 20%);
   }
+
+  &__icon {
+    display: flex;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
 }
