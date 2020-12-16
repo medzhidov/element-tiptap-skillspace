@@ -7,7 +7,10 @@
     <div
       :class="{
         'el-tiptap-editor__menu-bubble--active':
-          editorContext.menu.isActive && bubbleMenuEnable,
+          editorContext.menu.isActive
+          && bubbleMenuEnable
+          && activeMenu !== 'none'
+          && generateCommandButtonComponentSpecs(editorContext).length > 0
       }"
       :style="`
         left: ${ editorContext.menu.left }px;
