@@ -32,8 +32,3 @@ declare module 'vue/types/vue' {
     $elementTiptapPlugin: ElementTiptapPluginInterface;
   }
 }
-
-declare module "*.svg" {
-  const content: any;
-  export default content;
-}
