@@ -24,12 +24,15 @@
         class="image-resizer"
       >
         <span
-          v-for="direction in resizeDirections"
-          :key="direction"
-          :class="`image-resizer__handler--${direction}`"
-          class="image-resizer__handler"
-          @mousedown="onMouseDown($event, direction)"
-        />
+          class="image-resizer__handler image-resizer__handler--left"
+          @mousedown="onMouseDown($event, 'left')"
+        >
+        </span>
+        <span
+          class="image-resizer__handler image-resizer__handler--right"
+          @mousedown="onMouseDown($event, 'right')"
+        >
+        </span>
       </div>
 
       <!-- when image is break text or float
@@ -69,13 +72,11 @@
   import ImageBubbleMenu from '../MenuBubble/ImageBubbleMenu.vue';
 
   const enum ResizeDirection {
-    TOP_LEFT = 'tl',
-    TOP_RIGHT = 'tr',
-    BOTTOM_LEFT = 'bl',
-    BOTTOM_RIGHT = 'br',
-  };
+    LEFT = 'left',
+    RIGHT = 'right',
+  }
 
-  const MIN_SIZE = 20;
+  const MIN_SIZE = 80;
   const MAX_SIZE = 100000;
 
   @Component({
@@ -134,10 +135,8 @@
     });
 
     resizeDirections = [
-      ResizeDirection.TOP_LEFT,
-      ResizeDirection.TOP_RIGHT,
-      ResizeDirection.BOTTOM_LEFT,
-      ResizeDirection.BOTTOM_RIGHT,
+      ResizeDirection.LEFT,
+      ResizeDirection.RIGHT,
     ];
 
     resizing = false;
@@ -174,27 +173,21 @@
     }
 
     private async created() {
-      // const result = await resolveImg(this.src);
-      //
-      // if (!result.complete) {
-      //   result.width = MIN_SIZE;
-      //   result.height = MIN_SIZE;
-      // }
-      //
-      // this.originalSize = {
-      //   width: result.width,
-      //   height: result.height,
-      //   aspectRatio: result.width / result.height
-      // };
-      //
-      // this.getMaxSize();
-      //
-      // const width = (this.width ?? result.width) <= this.maxSize.width ? (this.width ?? result.width) : this.maxSize.width;
+      const result = await resolveImg(this.src);
+
+      if (!result.complete) {
+        result.width = MIN_SIZE;
+        result.height = MIN_SIZE;
+      }
+
+      this.originalSize = {
+        width: result.width,
+        height: result.height,
+        aspectRatio: result.width / result.height
+      };
 
       setTimeout(() => {
         this.updateAttrs({
-          // width: width,
-          // Height should be flexible relative to width
           height: null
         });
       }, 500);
@@ -241,21 +234,10 @@
       let {width, height} = this.node.attrs;
       const maxWidth = this.maxSize.width;
 
-      if (width && !height) {
-        width = width > maxWidth ? maxWidth : width;
-        height = Math.round(width / originalAspectRatio);
-      } else if (height && !width) {
-        width = Math.round(height * originalAspectRatio);
-        width = width > maxWidth ? maxWidth : width;
-      } else if (!width && !height) {
-        width = originalWidth > maxWidth ? maxWidth : originalWidth;
-        height = Math.round(width / originalAspectRatio);
-      } else {
-        width = width > maxWidth ? maxWidth : width;
-      }
+      width = width !== null ? width : originalWidth;
 
-      this.resizerState.w = width;
-      this.resizerState.h = height;
+      this.resizerState.w = width > maxWidth ? maxWidth : width;
+      this.resizerState.h = Math.round(width / originalAspectRatio);
       this.resizerState.dir = dir;
 
       this.resizing = true;

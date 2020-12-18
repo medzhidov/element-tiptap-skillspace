@@ -1,5 +1,5 @@
 <template>
-  <span :class="iframeViewClass">
+  <span class="iframe-view">
     <div
       :class="{
         'iframe-view__body--focused': selected,
@@ -152,12 +152,6 @@
 
     private get height(): number {
       return this.node.attrs.height;
-    }
-
-    private get iframeViewClass() {
-      return [
-        'iframe-view'
-      ];
     }
 
     private async created() {

@@ -42,7 +42,6 @@
   } from 'element-tiptap';
   // To check the real build
   // } from '../../lib/element-tiptap.esm';
-  import '../../lib/index.css';
 
   import codemirror from 'codemirror';
   import 'codemirror/lib/codemirror.css'; // import base style

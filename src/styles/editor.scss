@@ -129,9 +129,9 @@
     }
 
     &--active {
-      pointer-events: all;
       visibility: visible;
       opacity: 1;
+      pointer-events: all;
     }
   }
 
@@ -363,36 +363,25 @@
       &__handler {
         border: 1px solid $white-color;
         display: block;
-        width: 12px;
-        height: 12px;
+        width: 6px;
+        height: 60px;
+        max-height: 80%;
         position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
         z-index: 2;
         background-color: $primary-color;
-        border-radius: 2px;
+        border-radius: 4px;
+        cursor: w-resize;
         box-sizing: border-box;
 
-        &--tl {
-          top: -6px;
-          left: -6px;
-          cursor: nw-resize;
+        &--left {
+          left: 8px;
         }
 
-        &--tr {
-          top: -6px;
-          right: -6px;
-          cursor: ne-resize;
-        }
-
-        &--bl {
-          bottom: -6px;
-          left: -6px;
-          cursor: sw-resize;
-        }
-
-        &--br {
-          right: -6px;
-          bottom: -6px;
-          cursor: se-resize;
+        &--right{
+          right: 8px;
         }
       }
     }
@@ -513,6 +502,7 @@
         position: absolute;
         top: 0;
         left: 0;
+        border: none;
       }
     }
 
@@ -580,6 +570,7 @@
           margin: 0;
           cursor: pointer;
           pointer-events: none;
+          border: none;
         }
       }
     }

@@ -7,7 +7,7 @@
     border: 1px solid transparent;
     box-sizing: border-box;
     align-items: center;
-    border-radius: 50%;
+    border-radius: 8px;
     color: $primary-text-color;
     cursor: pointer;
     display: flex;
@@ -15,7 +15,7 @@
     height: 40px;
     margin: 2px;
     outline: 0;
-    transition: all .2s ease-in-out;
+    transition: all .05s ease-in-out;
     width: 40px;
 
     &:hover {
@@ -40,12 +40,7 @@
     &__heading {
       display: flex;
       align-items: center;
-
-      &__level {
-        font-size: 18px;
-        height: 17px;
-        font-weight: bold;
-      }
+      font-weight: bold;
     }
   }
 }

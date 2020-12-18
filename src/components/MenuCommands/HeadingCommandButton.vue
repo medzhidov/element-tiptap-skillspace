@@ -6,8 +6,7 @@
     :is-active="isHeadingActive"
   >
     <div class="el-tiptap-editor__command-button__heading" slot="icon">
-      <v-icon name="heading" />
-      <span class="el-tiptap-editor__command-button__heading__level" v-text="level"></span>
+      H{{ level }}
     </div>
   </command-button>
 </template>

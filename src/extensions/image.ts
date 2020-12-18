@@ -13,7 +13,6 @@ import ImageView from '@/components/ExtensionViews/ImageView.vue';
 function getAttrs(dom: HTMLElement): { [key: string]: any } {
   const {cssFloat, display} = dom.style;
   let {width, height} = dom.style;
-
   let dp = dom.getAttribute('data-display') || dom.getAttribute('display');
   if (dp) {
     dp = /(inline|block|left|right)/.test(dp) ? dp : ImageDisplay.INLINE;
@@ -26,10 +25,8 @@ function getAttrs(dom: HTMLElement): { [key: string]: any } {
   } else {
     dp = ImageDisplay.INLINE;
   }
-
   width = width || dom.getAttribute('width') || null;
   height = height || dom.getAttribute('height') || null;
-
   return {
     src: dom.getAttribute('src') || '',
     title: dom.getAttribute('title') || '',
@@ -42,7 +39,6 @@ function getAttrs(dom: HTMLElement): { [key: string]: any } {
 
 function toDOM(node: ProsemirrorNode): DOMOutputSpec {
   const {src, alt, title, width, height, display} = node.attrs;
-
   const attrs: { [key: string]: any } = {
     src,
     alt,
@@ -50,9 +46,7 @@ function toDOM(node: ProsemirrorNode): DOMOutputSpec {
     width,
     height,
   };
-
   attrs['data-display'] = display;
-
   return ['img', attrs];
 }
 
@@ -118,30 +112,24 @@ export default class Image extends TiptapImage implements MenuBtnView {
           handleDOMEvents: {
             paste(view, event) {
               const items = (event.clipboardData || event.originalEvent.clipboardData).items;
-
               items.forEach(async item => {
-                const {schema} = view.state
-                const image = item.getAsFile()
-
+                const {schema} = view.state;
+                const image = item.getAsFile();
                 // Return here, otherwise copying texts won't possible anymore
                 if (!image || !image.type.includes('image')) {
-                  return
+                  return;
                 }
-
-                event.preventDefault()
-
+                event.preventDefault();
                 const reader = new FileReader();
-
-                reader.addEventListener("load", function () {
+                reader.addEventListener('load', function () {
                   const node = schema.nodes.image.create({
                     src: reader.result,
                   });
-                  const transaction = view.state.tr.replaceSelectionWith(node)
-                  view.dispatch(transaction)
+                  const transaction = view.state.tr.replaceSelectionWith(node);
+                  view.dispatch(transaction);
                 }, false);
-
                 reader.readAsDataURL(image);
-              })
+              });
             }
           }
         }
