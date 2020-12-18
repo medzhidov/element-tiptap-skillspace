@@ -2,7 +2,7 @@
   <command-button
     :command="() => isHeadingActive = !isHeadingActive"
     :enable-tooltip="et.tooltip"
-    :tooltip="et.t('editor.extensions.Heading.buttons.heading')"
+    :tooltip="`${et.t('editor.extensions.Heading.buttons.heading')} ${level}`"
     :is-active="isHeadingActive"
   >
     <div class="el-tiptap-editor__command-button__heading" slot="icon">
