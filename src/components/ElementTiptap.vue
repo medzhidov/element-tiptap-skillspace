@@ -1,5 +1,6 @@
 <template>
   <div
+    ref="editor"
     v-if="editor"
     :style="elTiptapEditorStyle"
     :class="[{
@@ -296,6 +297,8 @@
       this.$emit(this.genEvent(EVENTS.INIT), {
         editor: this.editor,
       });
+
+      this.initSelectionCleaner();
     }
 
     private beforeDestroy() {
@@ -376,6 +379,23 @@
         emptyEditorClass: 'el-tiptap-editor--empty',
         emptyNodeClass: 'el-tiptap-editor__placeholder',
         emptyNodeText: this.placeholder,
+      });
+    }
+
+    initSelectionCleaner() {
+      window.addEventListener('click', (e) => {
+        if (
+          this.$refs.editor
+          // Клик вне редактора
+          // @ts-ignore
+          && !this.$refs.editor.contains(e.target)
+          // И вне модалок
+          // @ts-ignore
+          && !e.target.closest('.el-dialog, .el-dialog__wrapper')
+        ){
+          // @ts-ignore
+          this.editor.setSelection(0, 0)
+        }
       });
     }
   };
