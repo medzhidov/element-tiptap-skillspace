@@ -23,6 +23,8 @@
 
 <script lang="ts">
   import Icon from 'vue-awesome/components/Icon.vue';
+  import 'vue-awesome/icons/subscript';
+  import 'vue-awesome/icons/superscript';
   import 'vue-awesome/icons/heading';
   import 'vue-awesome/icons/font';
   import 'vue-awesome/icons/tint';

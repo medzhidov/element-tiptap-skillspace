@@ -28,6 +28,8 @@ import {
   Paragraph,
   // text extensions
   Bold,
+  Superscript,
+  Subscript,
   Underline,
   Italic,
   Strike,
@@ -71,7 +73,7 @@ import codemirror from 'codemirror';
 import 'codemirror/lib/codemirror.css'; // import base style
 import 'codemirror/mode/xml/xml.js'; // language
 import 'codemirror/addon/selection/active-line.js'; // require active-line.js
-import 'codemirror/addon/edit/closetag.js'; // autoCloseTags
+import 'codemirror/addon/edit/closetag.js';
 
 export default {
   data () {
@@ -81,6 +83,8 @@ export default {
         new Text(),
         new Paragraph(),
         new Bold({ bubble: true }),
+        new Superscript({ bubble: true }),
+        new Subscript({ bubble: true }),
         new Underline({ bubble: true }),
         new Italic({ bubble: true }),
         new Strike({ bubble: true }),

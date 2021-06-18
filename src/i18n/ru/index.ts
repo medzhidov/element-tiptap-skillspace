@@ -4,6 +4,12 @@ export default {
       Bold: {
         tooltip: 'Полужирный',
       },
+      Sup: {
+        tooltip: 'Надстрочный',
+      },
+      Sub: {
+        tooltip: 'Подстрочный',
+      },
       Underline: {
         tooltip: 'Подчеркнутый',
       },

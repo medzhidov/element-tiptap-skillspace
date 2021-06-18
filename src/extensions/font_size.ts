@@ -1,7 +1,7 @@
 
 import { Mark, MenuData } from 'tiptap';
 import { CommandFunction } from 'tiptap-commands';
-import {Node as ProsemirrorNode, MarkType, NodeSpec, MarkSpec} from 'prosemirror-model';
+import {Node as ProsemirrorNode, MarkType, MarkSpec} from 'prosemirror-model';
 import { MenuBtnView } from '@/../types';
 import FontSizeDropdown from '@/components/MenuCommands/FontSizeDropdown.vue';
 import { DEFAULT_FONT_SIZES, setFontSize, convertToPX } from '@/utils/font_size';

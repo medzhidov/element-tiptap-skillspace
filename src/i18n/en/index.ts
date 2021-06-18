@@ -4,6 +4,12 @@ export default {
       Bold: {
         tooltip: 'Bold',
       },
+      Superscript: {
+        tooltip: 'Superscript',
+      },
+      Subscript: {
+        tooltip: 'Subscript',
+      },
       Underline: {
         tooltip: 'Underline',
       },
