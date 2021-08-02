@@ -650,7 +650,7 @@
     }
   }
 
-  &__placeholder {
+  &__placeholder:not(.iframe-view) {
     &.el-tiptap-editor--empty:first-child::before {
       content: attr(data-empty-text);
       height: 0;
