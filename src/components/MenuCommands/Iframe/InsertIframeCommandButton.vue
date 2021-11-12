@@ -54,7 +54,10 @@ export default class InsertIframeCommandButton extends Vue {
         href = parsedInfo ? urlParser.create({
           videoInfo: parsedInfo,
           format: 'embed',
+          params: parsedInfo.params
         }) : href;
+
+        console.log(href);
 
         this.editorContext.commands.iframe({
           src: href
