@@ -41,6 +41,7 @@ export function isLineHeightActive (state: EditorState, lineHeight: string): boo
 export function transformLineHeightToCSS (value: string | number): string {
   if (!value) return '';
 
+
   let strValue = String(value);
 
   if (NUMBER_VALUE_PATTERN.test(strValue)) {
@@ -48,7 +49,7 @@ export function transformLineHeightToCSS (value: string | number): string {
     strValue = String(Math.round(numValue * 100)) + '%';
   }
 
-  return parseFloat(strValue) * LINE_HEIGHT_100 + '%';
+  return parseFloat(strValue) + '%';
 }
 
 export function transformCSStoLineHeight (value: string): string {
