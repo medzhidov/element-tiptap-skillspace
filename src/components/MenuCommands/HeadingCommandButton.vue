@@ -16,7 +16,7 @@
   import {MenuData} from 'tiptap';
   import {isHeadingActive} from '@/utils/heading';
   import CommandButton from './CommandButton.vue';
-  import Icon from "vue-awesome/components/Icon.vue";
+  import Icon from "vue-awesome/components/Icon.js";
 
   @Component({
     components: {

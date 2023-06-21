@@ -97,6 +97,7 @@ function getConfig ({
       }),
       typescript({
         clear: true,
+        abortOnError: false,
         typescript: require('typescript'),
       }),
       cjs({

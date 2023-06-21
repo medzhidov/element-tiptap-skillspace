@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-  import Icon from 'vue-awesome/components/Icon.vue';
+  import Icon from 'vue-awesome/components/Icon.js';
   import 'vue-awesome/icons/subscript';
   import 'vue-awesome/icons/superscript';
   import 'vue-awesome/icons/heading';

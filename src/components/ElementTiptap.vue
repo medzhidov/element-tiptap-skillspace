@@ -142,7 +142,7 @@
     @Prop({
       type: String,
       default: 'html',
-      validator(output): boolean {
+      validator(output: string): boolean {
         return ['html', 'json'].includes(output);
       },
     })

@@ -54,7 +54,7 @@
 </template>
 
 <script lang="ts">
-  import Icon from 'vue-awesome/components/Icon.vue';
+  import Icon from 'vue-awesome/components/Icon.js';
   import {Component, Inject, Prop, Vue, Watch} from 'vue-property-decorator';
   import {Editor, EditorMenuBubble, MenuData} from 'tiptap';
   // @ts-ignore

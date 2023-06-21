@@ -150,7 +150,7 @@
   import {MenuData} from 'tiptap';
   import {enableMergeCells, enableSplitCell, isTableActive} from '@/utils/table';
   import Icon from '../icon.vue';
-  import VueIcon from 'vue-awesome/components/Icon.vue';
+  import VueIcon from 'vue-awesome/components/Icon.js';
   import {Tooltip} from 'element-ui';
 
   @Component({
